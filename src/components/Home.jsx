@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -11,12 +12,16 @@ export default function Home() {
         a backend with APIs. Here I will Learn React with Authentication.
       </p>
       <div className="flex justify-center mt-6">
-        <button className="bg-gray-600 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded m-3">
-          Login
-        </button>
-        <button className="bg-gray-600 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded m-3">
-          Register
-        </button>
+        <Link to="/login">
+          <button className="bg-gray-600 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded m-3">
+            Login
+          </button>
+        </Link>
+        <Link to="/register">
+          <button className="bg-gray-600 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded m-3">
+            Register
+          </button>
+        </Link>
       </div>
     </>
   );
