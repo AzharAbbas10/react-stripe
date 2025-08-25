@@ -8,23 +8,22 @@ export default function AppProvider({ children }) {
 
   const [user, setUser] = useState({});
 
-  async function getUser() {
-    const res = await fetch("api/user", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const data = await res.json();
-
-    setUser(data);
-  }
-
   useEffect(() => {
-    if (token) {
-      getUser();
-    }
-  }, [token]);
+  if (token) {
+    const getUser = async () => {
+      const res = await fetch("api/user", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await res.json();
+      setUser(data);
+    };
+
+    getUser();
+  }
+}, [token]);
+
   const saveToken = (newToken) => {
     Cookies.set("access_token", newToken, {
       expires: 7,
